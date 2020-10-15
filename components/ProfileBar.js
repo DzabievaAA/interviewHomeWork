@@ -1,5 +1,4 @@
 import {
-	AppBar, 
 	Avatar,
 	Typography,
 	Button,
@@ -8,7 +7,6 @@ import {
 
 export default function ProfileBar ( props ) {
 	return( 
-	<AppBar> 
 		<Grid 
 			container 
 			direction="row"
@@ -27,6 +25,5 @@ export default function ProfileBar ( props ) {
 				<Button> Press ME! </Button>
 			</Grid>
 		</Grid>
-	</AppBar>
 	)
 }
