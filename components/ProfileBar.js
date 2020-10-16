@@ -5,7 +5,7 @@ import {
 	Grid
 } from '@material-ui/core'
 
-export default function ProfileBar ( {nameSurname} ) {
+export default function ProfileBar ( {nameSurname, onClick} ) {
 	return( 
 		<Grid 
 			container 
@@ -22,7 +22,7 @@ export default function ProfileBar ( {nameSurname} ) {
 			</Grid>
 
 			<Grid item xs={2}>
-				<Button> Press ME! </Button>
+				<Button onClick={onClick}> Press ME! </Button>
 			</Grid>
 		</Grid>
 	)

@@ -4,7 +4,19 @@ import {
 	Button
 } from '@material-ui/core'
 
-export default function UserInfoEditor ({nameSurname, email, cellphone }) {
+import { useRef } from 'react';
+
+export default function UserInfoEditor ({nameSurname, 
+										email, 
+										cellphone, 
+										setEditing, 
+										setCellphone,
+										setNameSurname,
+										setEmail }) {
+
+const refNameSurname = useRef(null);
+const refEmail = useRef(null);
+const refCellphone = useRef(null);										
 	return (
 	<>
 	<Grid container 
@@ -12,17 +24,27 @@ export default function UserInfoEditor ({nameSurname, email, cellphone }) {
 	>
 		<TextField label="Фамилия и Имя" 
 			variant="outlined"
-			defaultValue={nameSurname}/>
+			defaultValue={nameSurname}
+			inputRef={refNameSurname}
+			/>
 
 		<TextField label="E-mail" 
 			variant="outlined"
-			defaultValue={email}/>
+			defaultValue={email}
+			inputRef={refEmail}/>
 
 		<TextField label="Номер телефона" 
 			variant="outlined"
-			defaultValue={cellphone}/>
+			defaultValue={cellphone}
+			inputRef={refCellphone}/>
 
-		<Button> Сохранить изменения </Button>
+		<Button onClick={() => {
+			setEditing(false)
+			setCellphone(refCellphone.current.value)
+			setNameSurname(refNameSurname.current.value)
+			setEmail(refEmail.current.value)			
+		}
+			}> Сохранить изменения </Button>
 	</Grid>
 	</>
 	)
