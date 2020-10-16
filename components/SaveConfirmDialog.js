@@ -4,11 +4,40 @@ import {Grid,
         Dialog,
         DialogActions} from '@material-ui/core'
 
+import { makeStyles } from '@material-ui/core/styles'        
+
+
 export default function SaveConfirmDialog ( { isOpen, onConfirm, onCancel } ) {
-    return (
+ 
+const useStyles = makeStyles({
+  buttonFull: {
+    backgroundColor: "#01BDA7",
+    width: 212,
+    height: 49,
+    borderRadius: 36,
+    color: "white",
+    marginTop: 26,
+    marginBottom: 17,
+  },
+  buttonEmpty: {
+    width: 212,
+    height: 49,
+    borderRadius: 36,
+    color: "#01BDA7",
+    marginTop: 26,
+    marginBottom: 17,
+    border: "1px solid #00BFA5",
+    boxSizing: "border-box",
+    bordeRadius: 41,
+  },
+});
+const classes = useStyles()
+ 
+ return (
 <>
     <Grid container
-          direction="column">
+          direction="column"
+          >
       <Dialog open={isOpen}
           keepMounted
         >
@@ -17,10 +46,10 @@ export default function SaveConfirmDialog ( { isOpen, onConfirm, onCancel } ) {
         </DialogTitle>
 
         <DialogActions>
-            <Button onClick={()=>{ onConfirm() }}  color="primary">
+            <Button className={classes.buttonFull} onClick={()=>{ onConfirm() }}  color="primary">
               Сохранить
             </Button>
-            <Button onClick={() => onCancel()} color="primary">
+            <Button className={classes.buttonEmpty} onClick={() => onCancel()} color="primary">
               Не сохранять
             </Button>
         </DialogActions>
