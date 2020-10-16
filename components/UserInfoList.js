@@ -15,9 +15,11 @@ export default function UserInfoList ( {email, cellphone} ){
 const useStyles = makeStyles({
 	containList: {
 		boxShadow: "0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.15);",
+		backgroundColor: "white",
 		marginLeft: 10,
 		marginTop: 10,
-		borderRadius: 10,
+		marginRight: -10,
+		borderRadius: 10
 	},
 });
 const classes = useStyles()

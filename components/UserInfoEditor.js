@@ -66,6 +66,7 @@ const classes = useStyles()
 	/>
 	<Grid container 
 		direction="column"
+		alignItems="center"
 		className={classes.containerForFields}
 	>
 		<TextField className={classes.textField} label="Фамилия и Имя" 

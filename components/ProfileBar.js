@@ -26,7 +26,6 @@ const useStyles = makeStyles({
 		marginTop: 10,
 		color: "white",
 		marginLeft: 10,
-		marginRight: 10,
 		borderRadius: 10,
 	},
 	nameSurname: {
@@ -53,7 +52,7 @@ const classes = useStyles()
 			alignItems="center"
 		>
 			<Grid item xs={2}>
-				<Avatar className={classes.avatar} src="/public/avatar"/>	
+				<Avatar className={classes.avatar} src="/avatar.png"/>	
 			</Grid>
 
 			<Grid item xs={8}>

@@ -1,11 +1,12 @@
 import {Grid,
         Button,
         DialogTitle,
-        Dialog,
-        DialogActions} from '@material-ui/core'
+        Dialog
+      } from '@material-ui/core'
 
-import { makeStyles } from '@material-ui/core/styles'        
+import { makeStyles } from '@material-ui/core/styles'
 
+import CloseIcon from '@material-ui/icons/Close';
 
 export default function SaveConfirmDialog ( { isOpen, onConfirm, onCancel } ) {
  
@@ -17,44 +18,54 @@ const useStyles = makeStyles({
     borderRadius: 36,
     color: "white",
     marginTop: 26,
-    marginBottom: 17,
   },
   buttonEmpty: {
     width: 212,
     height: 49,
     borderRadius: 36,
     color: "#01BDA7",
-    marginTop: 26,
+    marginTop: 28,
     marginBottom: 17,
     border: "1px solid #00BFA5",
     boxSizing: "border-box",
-    bordeRadius: 41,
   },
+  closeIcon: {
+    marginLeft: "auto",
+    marginTop: 25,
+    marginRight: 25
+  },
+  dialog: {
+    marginTop: 142
+  }
 });
 const classes = useStyles()
  
  return (
 <>
-    <Grid container
-          direction="column"
-          >
-      <Dialog open={isOpen}
-          keepMounted
-        >
-        <DialogTitle>
-            {"Сохранить изменения?"}
-        </DialogTitle>
+  <Dialog open={isOpen}
+    fullScreen={true}
+    className={classes.dialog}
+  >
+    <CloseIcon onClick={()=>onCancel()} 
+        className={classes.closeIcon}/>
 
-        <DialogActions>
-            <Button className={classes.buttonFull} onClick={()=>{ onConfirm() }}  color="primary">
-              Сохранить
-            </Button>
-            <Button className={classes.buttonEmpty} onClick={() => onCancel()} color="primary">
-              Не сохранять
-            </Button>
-        </DialogActions>
-      </Dialog>
+    <Grid container
+      direction="column"
+      alignItems="center"
+    >
+      <DialogTitle>
+        {"Сохранить изменения?"}
+      </DialogTitle>
+
+      <Button className={classes.buttonFull} onClick={()=>{ onConfirm() }}  color="primary">
+        Сохранить
+      </Button>
+
+      <Button className={classes.buttonEmpty} onClick={() => onCancel()} color="primary">
+        Не сохранять
+      </Button>
     </Grid>
+  </Dialog>
 </>
     )
 }
