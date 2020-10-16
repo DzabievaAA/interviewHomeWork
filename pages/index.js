@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 
 import ProfileBar from '../components/ProfileBar'
 import UserInfoList from '../components/UserInfoList'
+import HeaderInfo from '../components/HeaderInfo'
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+		  	<HeaderInfo/>
 			<ProfileBar/>
 		  	<UserInfoList/>
       </main>
