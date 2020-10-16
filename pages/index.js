@@ -3,13 +3,22 @@ import styles from '../styles/Home.module.css'
 
 import React, { useState } from 'react';
 
+import { makeStyles } from '@material-ui/core/styles'
+
 import ProfileBar from '../components/ProfileBar'
 import UserInfoList from '../components/UserInfoList'
 import HeaderInfo from '../components/HeaderInfo'
 import UserInfoEditor from '../components/UserInfoEditor'
 import SaveConfirmDialog from '../components/SaveConfirmDialog'
 
+
 export default function Home() {
+  const useStyles = makeStyles({
+    main: {
+      backgroundImage: "url (./public/Rectangle 1.png)",
+    },
+  });
+  const classes = useStyles()
   const [nameSurname, setNameSurname] = useState('Иванова Анна Михайловна');
   const [email, setEmail] = useState("ivanova@mail.ru");
   const [cellphone, setCellphone] = useState("+7 987 978 6767");
@@ -23,7 +32,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-		  	<HeaderInfo/>
+		  	<HeaderInfo className={styles.root}/>
 			  <ProfileBar  nameSurname={nameSurname}
                      onClick={() => setEditing(!isEditing)}
                      isEditing={isEditing}/>
