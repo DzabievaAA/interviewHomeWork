@@ -22,7 +22,11 @@ const [modalIsOpen, setModalIsOpen] = useState( false );
 
 const refNameSurname = useRef(null);
 const refEmail = useRef(null);
-const refCellphone = useRef(null);	
+const refCellphone = useRef(null);
+
+const [nameIsValid, setNameIsValid] = useState( true );
+const [emailIsValid, setEmailIsValid] = useState( true );
+const [phoneIsValid, setPhoneIsValid] = useState( true );
 
 const useStyles = makeStyles({
 	textField: {
@@ -73,20 +77,44 @@ const classes = useStyles()
 			variant="outlined"
 			defaultValue={nameSurname}
 			inputRef={refNameSurname}
+			error={!nameIsValid}
+			onChange={( event ) => setNameIsValid( validateName(event.target.value))}
 			/>
 
 		<TextField className={classes.textField} label="E-mail" 
 			variant="outlined"
 			defaultValue={email}
-			inputRef={refEmail}/>
+			inputRef={refEmail}
+			error={!emailIsValid}
+			onChange={( event ) => setEmailIsValid( validateEmail(event.target.value))}
+			/>
+			
 
 		<TextField className={classes.textField} label="Номер телефона" 
 			variant="outlined"
 			defaultValue={cellphone}
-			inputRef={refCellphone}/>
+			inputRef={refCellphone}
+			error={!phoneIsValid}
+			onChange={( event ) => setPhoneIsValid( validatePhone(event.target.value))}
+			/>
 
 		<Button className={classes.buttonFull} onClick={() => setModalIsOpen(true)}> Сохранить изменения </Button>
 	</Grid>
 	</>
 	)
+}
+
+
+function validateName( name ){
+	return /^([a-zA-Zа-яА-Я]+ )([a-zA-Zа-яА-Я]+( [a-zA-Zа-яА-Я]+)?)$/.test( name );
+}
+
+function validateEmail( email ){
+	return /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test( email )
+}
+
+function validatePhone( phoneNumber ){
+	let cleanNumber = phoneNumber.replace(/[ \-\(\)]/g,"");
+	debugger
+	return /^\+?\d{11}$/.test( cleanNumber )
 }
