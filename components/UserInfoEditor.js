@@ -58,10 +58,20 @@ const classes = useStyles()
 	<SaveConfirmDialog isOpen={modalIsOpen}
 		onConfirm={ ()=>{
 			setModalIsOpen(false)
-			setCellphone(refCellphone.current.value)
-			setNameSurname( refNameSurname.current.value)
-			setEmail( refEmail.current.value )
+
+			const phoneNumber = refCellphone.current.value
+			setCellphone( phoneNumber )
+			const name = refNameSurname.current.value
+			setNameSurname( name )
+			const email = refEmail.current.value
+			setEmail( email )
+
 			setEditing( false )
+
+			fetch('/api/sendUserData', {
+				method:"POST",
+				body: JSON.stringify({ name : name, email:email, phoneNumber:phoneNumber}),
+			})
 		}}
 		onCancel={ ()=>{
 			setModalIsOpen(false)
