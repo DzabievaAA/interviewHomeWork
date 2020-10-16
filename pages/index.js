@@ -5,6 +5,7 @@ import ProfileBar from '../components/ProfileBar'
 import UserInfoList from '../components/UserInfoList'
 import HeaderInfo from '../components/HeaderInfo'
 import UserInfoEditor from '../components/UserInfoEditor'
+import SaveConfirmDialog from '../components/SaveConfirmDialog'
 
 export default function Home() {
   return (
@@ -16,9 +17,10 @@ export default function Home() {
 
       <main className={styles.main}>
 		  	<HeaderInfo/>
-			<ProfileBar/>
+			  <ProfileBar/>
 		  	<UserInfoList/>
 		    <UserInfoEditor/>
+        <SaveConfirmDialog />
       </main>
 
     </div>
