@@ -9,7 +9,7 @@ import {
 import AlternativeEmailIcon from '@material-ui/icons/AlternateEmail'
 import PhoneIcon from '@material-ui/icons/Phone'
 
-export default function UserInfoList ( props ){
+export default function UserInfoList ( {email, cellphone} ){
 	return(
 	<List>
 		<ListItem>
@@ -17,7 +17,7 @@ export default function UserInfoList ( props ){
 				<AlternativeEmailIcon/>
 			</ListItemAvatar>
 			<ListItemText>
-				test@mail.eu
+				{email}
 			</ListItemText>
 		</ListItem>
 
@@ -26,7 +26,7 @@ export default function UserInfoList ( props ){
 				<PhoneIcon/>
 			</ListItemAvatar>
 			<ListItemText>
-				Укажите номер телефона
+				{cellphone}
 			</ListItemText>
 		</ListItem>
 

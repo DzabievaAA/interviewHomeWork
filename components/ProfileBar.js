@@ -5,7 +5,7 @@ import {
 	Grid
 } from '@material-ui/core'
 
-export default function ProfileBar ( props ) {
+export default function ProfileBar ( {nameSurname} ) {
 	return( 
 		<Grid 
 			container 
@@ -18,7 +18,7 @@ export default function ProfileBar ( props ) {
 			</Grid>
 
 			<Grid item xs={8}>
-				<Typography> Name Surname Otchestvo </Typography>
+				<Typography> {nameSurname} </Typography>
 			</Grid>
 
 			<Grid item xs={2}>

@@ -4,7 +4,7 @@ import {
 	Button
 } from '@material-ui/core'
 
-export default function UserInfoEditor (props) {
+export default function UserInfoEditor ({nameSurname, email, cellphone }) {
 	return (
 	<>
 	<Grid container 
@@ -12,15 +12,15 @@ export default function UserInfoEditor (props) {
 	>
 		<TextField label="Фамилия и Имя" 
 			variant="outlined"
-			defaultValue="Укажите Вашу Фамилию и Имя"/>
+			defaultValue={nameSurname}/>
 
 		<TextField label="E-mail" 
 			variant="outlined"
-			defaultValue="Ivanova@mail.ru"/>
+			defaultValue={email}/>
 
 		<TextField label="Номер телефона" 
 			variant="outlined"
-			defaultValue="Укажите Ваш номер телефона"/>
+			defaultValue={cellphone}/>
 
 		<Button> Сохранить изменения </Button>
 	</Grid>

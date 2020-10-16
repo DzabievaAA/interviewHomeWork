@@ -17,10 +17,13 @@ export default function Home() {
 
       <main className={styles.main}>
 		  	<HeaderInfo/>
-			  <ProfileBar/>
-		  	<UserInfoList/>
-		    <UserInfoEditor/>
-        <SaveConfirmDialog />
+			  <ProfileBar  nameSurname={'Иванова Анна Михайловна'}/>
+		  	<UserInfoList email={"ivanova@mail.ru"}
+                      cellphone={'+7 9089798997'}/>
+		    <UserInfoEditor nameSurname={"Укажите Ваши фамилию и имя"}
+                        email={'ivanova@mail.ru'}
+                        cellphone={'Укажите номер телефона'}/>
+        {/* <SaveConfirmDialog /> */}
       </main>
 
     </div>
