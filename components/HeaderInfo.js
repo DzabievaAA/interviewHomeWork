@@ -15,10 +15,9 @@ export default function HeaderInfo (props){
 		  color: "white",
 		  width: 24,
 		  height: 24,
-		  marginRight: 26,
+		  marginRight: 14,
 		},
 		avatar: {
-		  marginRight: 10,
 		  marginLeft: 10,
 		  width: 24,
 		  height: 24,
@@ -33,6 +32,10 @@ export default function HeaderInfo (props){
 		},
 		typographyBlock: {
 			marginLeft: 10,
+			marginTop: 20,
+		},
+		containRingAndAvatar: {
+			marginTop: 17,
 		}
 	  });
 	const classes = useStyles()
@@ -41,6 +44,7 @@ export default function HeaderInfo (props){
 		<Grid container 
 			  direction="row-reverse"
 			  alignItems="center"
+			  className={classes.containRingAndAvatar}
 		>
 			{/* <Typography> UserName </Typography> */}
 			<Avatar className={classes.avatar} src="public/avatar.png"/>

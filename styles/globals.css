@@ -6,8 +6,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-image: url(../public/Rectangle\ 1.png);
   background-repeat: no-repeat;         
-  background-size: contain; 
-  background-position: top center;
+  background-size: contain;
+  background-position: top;
   background-attachment: fixed;
 }
 
