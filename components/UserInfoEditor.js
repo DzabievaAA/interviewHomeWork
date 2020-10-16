@@ -31,10 +31,20 @@ const useStyles = makeStyles({
 		marginTop: 26,
 	},
 	containerForFields: {
-		boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);",
+		boxShadow: "0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.15);",
 		marginLeft: 10,
 		marginTop: 10,
 		borderRadius: 10,
+		marginRight: 10,
+	},
+	buttonFull: {
+		backgroundColor: "#01BDA7",
+		width: 212,
+		height: 49,
+		borderRadius: 36,
+		color: "white",
+		marginTop: 26,
+		marginBottom: 17,
 	}
 });
 const classes = useStyles()
@@ -74,7 +84,7 @@ const classes = useStyles()
 			defaultValue={cellphone}
 			inputRef={refCellphone}/>
 
-		<Button onClick={() => setModalIsOpen(true)}> Сохранить изменения </Button>
+		<Button className={classes.buttonFull} onClick={() => setModalIsOpen(true)}> Сохранить изменения </Button>
 	</Grid>
 	</>
 	)

@@ -37,6 +37,9 @@ const useStyles = makeStyles({
 		height: 18,
 		color: "white",
 		padding: "0 0 0 0"
+	},
+	crossEdit: {
+		color: "white"
 	}
 });
 const classes = useStyles()
@@ -61,7 +64,7 @@ const classes = useStyles()
 				<Button onClick={onClick}>
 					{
 						isEditing ? 
-							<CancelEditIcon/>
+							<CancelEditIcon className={classes.crossEdit}/>
 							:
 							<EditIcon className={classes.penEdit}/>
 					}
