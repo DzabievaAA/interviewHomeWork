@@ -115,6 +115,5 @@ function validateEmail( email ){
 
 function validatePhone( phoneNumber ){
 	let cleanNumber = phoneNumber.replace(/[ \-\(\)]/g,"");
-	debugger
 	return /^\+?\d{11}$/.test( cleanNumber )
 }

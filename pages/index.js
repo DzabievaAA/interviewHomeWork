@@ -19,10 +19,23 @@ export default function Home() {
     },
   });
   const classes = useStyles()
+
   const [nameSurname, setNameSurname] = useState('Иванова Анна Михайловна');
   const [email, setEmail] = useState("ivanova@mail.ru");
   const [cellphone, setCellphone] = useState("+7 987 978 6767");
   const [isEditing, setEditing] = useState(false);
+
+  React.useEffect( () => {
+    setNameSurname( localStorage.getItem("name") || nameSurname);
+    setEmail( localStorage.getItem("email") || email);
+    setCellphone( localStorage.getItem("cellphone") || cellphone);
+  },[]);
+
+  React.useEffect( () =>{
+    localStorage.setItem("name", nameSurname)
+    localStorage.setItem("email", email)
+    localStorage.setItem("cellphone", cellphone)
+  },[nameSurname, email, cellphone])
 
   return (
     <div className={styles.container}>
