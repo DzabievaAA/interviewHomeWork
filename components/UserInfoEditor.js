@@ -4,7 +4,9 @@ import {
 	Button
 } from '@material-ui/core'
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+
+import SaveConfirmDialog from './SaveConfirmDialog';
 
 export default function UserInfoEditor ({nameSurname, 
 										email, 
@@ -14,11 +16,27 @@ export default function UserInfoEditor ({nameSurname,
 										setNameSurname,
 										setEmail }) {
 
+const [modalIsOpen, setModalIsOpen] = useState( false );
+
 const refNameSurname = useRef(null);
 const refEmail = useRef(null);
 const refCellphone = useRef(null);										
 	return (
+		
 	<>
+	<SaveConfirmDialog isOpen={modalIsOpen}
+		onConfirm={ ()=>{
+			setModalIsOpen(false)
+			setCellphone(refCellphone.current.value)
+			setNameSurname( refNameSurname.current.value)
+			setEmail( refEmail.current.value )
+			setEditing( false )
+		}}
+		onCancel={ ()=>{
+			setModalIsOpen(false)
+			setEditing( false );
+		}}
+	/>
 	<Grid container 
 		direction="column"
 	>
@@ -38,13 +56,7 @@ const refCellphone = useRef(null);
 			defaultValue={cellphone}
 			inputRef={refCellphone}/>
 
-		<Button onClick={() => {
-			setEditing(false)
-			setCellphone(refCellphone.current.value)
-			setNameSurname(refNameSurname.current.value)
-			setEmail(refEmail.current.value)			
-		}
-			}> Сохранить изменения </Button>
+		<Button onClick={() => setModalIsOpen(true)}> Сохранить изменения </Button>
 	</Grid>
 	</>
 	)
