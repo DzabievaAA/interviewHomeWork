@@ -30,6 +30,9 @@ export default function HeaderInfo (props){
 		pathProfile: {
 			color: "white",
 			fontSize: 12,
+		},
+		typographyBlock: {
+			marginLeft: 10,
 		}
 	  });
 	const classes = useStyles()
@@ -50,6 +53,7 @@ export default function HeaderInfo (props){
 
 		<Grid container
 			  direction="column"
+			  className={classes.typographyBlock}
 		>
 			<Typography className={classes.profileName}> Личный профиль </Typography>
 			<Typography className={classes.pathProfile}> Главная/Личный профиль </Typography>
