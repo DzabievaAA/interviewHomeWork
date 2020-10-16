@@ -5,7 +5,11 @@ import {
 	Grid
 } from '@material-ui/core'
 
-export default function ProfileBar ( {nameSurname, onClick} ) {
+import EditIcon from '@material-ui/icons/Create';
+import CancelEditIcon from '@material-ui/icons/Close';
+
+
+export default function ProfileBar ( {nameSurname, onClick, isEditing} ) {
 	return( 
 		<Grid 
 			container 
@@ -22,7 +26,14 @@ export default function ProfileBar ( {nameSurname, onClick} ) {
 			</Grid>
 
 			<Grid item xs={2}>
-				<Button onClick={onClick}> Press ME! </Button>
+				<Button onClick={onClick}>
+					{
+						isEditing ? 
+							<CancelEditIcon/>
+							:
+							<EditIcon/>
+					}
+				</Button>
 			</Grid>
 		</Grid>
 	)

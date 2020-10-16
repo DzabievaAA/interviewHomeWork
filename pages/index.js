@@ -25,7 +25,8 @@ export default function Home() {
       <main className={styles.main}>
 		  	<HeaderInfo/>
 			  <ProfileBar  nameSurname={nameSurname}
-                     onClick={() => setEditing(true)}/>
+                     onClick={() => setEditing(!isEditing)}
+                     isEditing={isEditing}/>
         {   
           isEditing ? 
             <UserInfoEditor nameSurname={nameSurname}
