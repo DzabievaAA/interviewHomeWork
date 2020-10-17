@@ -2,7 +2,8 @@ import {
 	Avatar,
 	Typography,
 	Button,
-	Grid
+	Grid,
+	Hidden
 } from '@material-ui/core'
 
 import EditIcon from '@material-ui/icons/Create';
@@ -12,14 +13,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default function ProfileBar ( {nameSurname, onClick, isEditing} ) {
 
-const useStyles = makeStyles({
-	avatar: {
-		color: "white",
-		width: 40,
-		height: 40,
-		marginLeft: 10,
-		marginRight: 10,
-	},
+const useStyles = makeStyles( (theme) => ({
 	container: {
 		backgroundColor: '#1A78C2',
 		height: 71,
@@ -27,9 +21,28 @@ const useStyles = makeStyles({
 		color: "white",
 		marginLeft: 10,
 		borderRadius: 10,
+		[theme.breakpoints.up('sm')]:{
+			height: 128
+		}
+	},
+	avatar: {
+		color: "white",
+		width: 40,
+		height: 40,
+		marginLeft: 10,
+		[theme.breakpoints.up('sm')]:{
+			width: 80,
+			height: 80,
+			marginLeft: 30,
+		}
 	},
 	nameSurname: {
-		marginleft: 10,
+		fontSize: 14,
+		marginLeft: 10,
+		[theme.breakpoints.up('sm')]:{
+			fontSize: 30,
+			marginLeft: 45
+		}
 	},
 	penEdit: {
 		width: 18,
@@ -39,8 +52,11 @@ const useStyles = makeStyles({
 	},
 	crossEdit: {
 		color: "white"
+	},
+	editDescrip: {
+		fontSize: 14,
 	}
-});
+}));
 const classes = useStyles()
 
 	return( 
@@ -48,18 +64,27 @@ const classes = useStyles()
 		    className={classes.container}
 			container 
 			direction="row"
-			justify="center"
 			alignItems="center"
 		>
-			<Grid item xs={2}>
+			<Grid item xs={2} sm={1} >
 				<Avatar className={classes.avatar} src="/avatar.png"/>	
 			</Grid>
 
-			<Grid item xs={8}>
+			<Grid item xs={8} sm={9}>
 				<Typography className={classes.nameSurname}> {nameSurname} </Typography>
 			</Grid>
 
-			<Grid item xs={2}>
+			<Grid item xs={2} sm={2}>
+				<Grid container 
+					direction="row"
+					justify="flex-end"
+					alignItems="center">
+					
+					<Hidden xsDown>
+						<Typography className={classes.editDescrip}>
+							РЕДАКТИРОВАТЬ
+						</Typography>
+					</Hidden>
 				<Button onClick={onClick}>
 					{
 						isEditing ? 
@@ -68,6 +93,7 @@ const classes = useStyles()
 							<EditIcon className={classes.penEdit}/>
 					}
 				</Button>
+				</Grid>
 			</Grid>
 		</Grid>
 	)
