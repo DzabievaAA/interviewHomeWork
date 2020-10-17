@@ -4,7 +4,8 @@ import {
 	ListItemAvatar,
 	ListItemText,
 	Avatar,
-	ThemeProvider
+	ThemeProvider,
+	Typography
 } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -31,6 +32,12 @@ const useStyles = makeStyles( (theme) => ({
 			width: 30,
 			height: 30,
 		  }
+	},
+	text:{
+		fontSize: 14,
+		[theme.breakpoints.up('sm')]:{
+			fontSize: 18,
+		  }
 	}
 }));
 const classes = useStyles()
@@ -40,8 +47,10 @@ const classes = useStyles()
 			<ListItemAvatar>
 				<AlternativeEmailIcon className={classes.icon}/>
 			</ListItemAvatar>
-			<ListItemText>
-				{email}
+			<ListItemText >
+				<Typography className={classes.text}>
+					{email}
+				</Typography>
 			</ListItemText>
 		</ListItem>
 		<hr/>
@@ -50,7 +59,9 @@ const classes = useStyles()
 				<PhoneIcon className={classes.icon}/>
 			</ListItemAvatar>
 			<ListItemText>
-				{cellphone}
+				<Typography className={classes.text}>
+					{cellphone}	
+				</Typography>
 			</ListItemText>
 		</ListItem>
 
