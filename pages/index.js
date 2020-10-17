@@ -10,14 +10,14 @@ import ProfileBar from '../components/ProfileBar'
 import UserInfoList from '../components/UserInfoList'
 import HeaderInfo from '../components/HeaderInfo'
 import UserInfoEditor from '../components/UserInfoEditor'
-import SaveConfirmDialog from '../components/SaveConfirmDialog'
-
+import SuccessfullOperationDialog from '../components/SuccessfullOperationDialog'
 
 export default function Home() {
   const [nameSurname, setNameSurname] = useState('Иванова Анна Михайловна');
   const [email, setEmail] = useState("ivanova@mail.ru");
   const [cellphone, setCellphone] = useState("+7 987 978 6767");
   const [isEditing, setEditing] = useState(false);
+  const [successDialogVisible, setSuccessDialogVisible] = useState( false );
 
   React.useEffect( () => {
     setNameSurname( localStorage.getItem("name") || nameSurname);
@@ -43,7 +43,12 @@ export default function Home() {
       </Head>
 
       <main>
+        
         <ThemeProvider theme={colorTheme}>
+          <SuccessfullOperationDialog isOpen={successDialogVisible} 
+              close={() => setSuccessDialogVisible(false)}
+              />
+
           <HeaderInfo userName={nameSurname}/>
           <ProfileBar  nameSurname={nameSurname}
                       onClick={() => setEditing(!isEditing)}
@@ -56,7 +61,8 @@ export default function Home() {
               setEditing={setEditing}
               setNameSurname={setNameSurname}
               setEmail={setEmail}
-              setCellphone={setCellphone}/>  
+              setCellphone={setCellphone}
+              showNotification={() => setSuccessDialogVisible( true )}/>  
             :
             <UserInfoList email={email}
               cellphone={cellphone}

@@ -23,7 +23,8 @@ export default function UserInfoEditor ({nameSurname,
 										setEditing, 
 										setCellphone,
 										setNameSurname,
-										setEmail }) {
+										setEmail,
+										showNotification }) {
 
 const [modalIsOpen, setModalIsOpen] = useState( false );
 
@@ -90,6 +91,8 @@ const classes = useStyles()
 
 			setEditing( false )
 
+			showNotification( true )
+			
 			fetch('/api/sendUserData', {
 				method:"POST",
 				body: JSON.stringify({ name : name, email:email, phoneNumber:phoneNumber}),
