@@ -19,7 +19,6 @@ const useStyles = makeStyles( (theme) => ({
 		height: 71,
 		marginTop: 10,
 		color: "white",
-		marginLeft: 10,
 		borderRadius: 10,
 		[theme.breakpoints.up('sm')]:{
 			height: 128

@@ -36,7 +36,6 @@ const useStyles = makeStyles({
 	},
 	containerForFields: {
 		boxShadow: "0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.15);",
-		marginLeft: 10,
 		marginTop: 10,
 		borderRadius: 10,
 		marginRight: 10,

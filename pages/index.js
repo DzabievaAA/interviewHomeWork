@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles'
+import {Box} from '@material-ui/core'
 
 import ProfileBar from '../components/ProfileBar'
 import UserInfoList from '../components/UserInfoList'
@@ -13,13 +14,6 @@ import SaveConfirmDialog from '../components/SaveConfirmDialog'
 
 
 export default function Home() {
-  const useStyles = makeStyles({
-    main: {
-      backgroundImage: "url (./public/Rectangle 1.png)",
-    },
-  });
-  const classes = useStyles()
-
   const [nameSurname, setNameSurname] = useState('Иванова Анна Михайловна');
   const [email, setEmail] = useState("ivanova@mail.ru");
   const [cellphone, setCellphone] = useState("+7 987 978 6767");
@@ -38,30 +32,32 @@ export default function Home() {
   },[nameSurname, email, cellphone])
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Account settings</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-		  	<HeaderInfo className={styles.root}/>
+      <main>
+
+		  	<HeaderInfo userName={nameSurname}/>
 			  <ProfileBar  nameSurname={nameSurname}
                      onClick={() => setEditing(!isEditing)}
                      isEditing={isEditing}/>
         {   
           isEditing ? 
-            <UserInfoEditor nameSurname={nameSurname}
-                            email={email}
-                            cellphone={cellphone}
-                            setEditing={setEditing}
-                            setNameSurname={setNameSurname}
-                            setEmail={setEmail}
-                            setCellphone={setCellphone}/>  
-            :
-            <UserInfoList email={email}
-                          cellphone={cellphone}
-                          />
+          <UserInfoEditor nameSurname={nameSurname}
+          email={email}
+          cellphone={cellphone}
+          setEditing={setEditing}
+          setNameSurname={setNameSurname}
+          setEmail={setEmail}
+          setCellphone={setCellphone}/>  
+          :
+          <UserInfoList email={email}
+          cellphone={cellphone}
+          />
+
         }
         
       </main>
