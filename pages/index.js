@@ -3,8 +3,8 @@ import styles from '../styles/Home.module.css'
 
 import React, { useState } from 'react';
 
-import { makeStyles } from '@material-ui/core/styles'
-import {Box} from '@material-ui/core'
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
+import {ThemeProvider} from '@material-ui/core'
 
 import ProfileBar from '../components/ProfileBar'
 import UserInfoList from '../components/UserInfoList'
@@ -31,6 +31,10 @@ export default function Home() {
     localStorage.setItem("cellphone", cellphone)
   },[nameSurname, email, cellphone])
 
+  const colorTheme = createMuiTheme({
+    mainColor : "#00BFA5"
+  })
+
   return (
     <div>
       <Head>
@@ -39,27 +43,27 @@ export default function Home() {
       </Head>
 
       <main>
-
-		  	<HeaderInfo userName={nameSurname}/>
-			  <ProfileBar  nameSurname={nameSurname}
-                     onClick={() => setEditing(!isEditing)}
-                     isEditing={isEditing}/>
-        {   
-          isEditing ? 
-          <UserInfoEditor nameSurname={nameSurname}
-          email={email}
-          cellphone={cellphone}
-          setEditing={setEditing}
-          setNameSurname={setNameSurname}
-          setEmail={setEmail}
-          setCellphone={setCellphone}/>  
-          :
-          <UserInfoList email={email}
-          cellphone={cellphone}
-          />
-
-        }
-        
+        <ThemeProvider theme={colorTheme}>
+          <HeaderInfo userName={nameSurname}/>
+          <ProfileBar  nameSurname={nameSurname}
+                      onClick={() => setEditing(!isEditing)}
+                      isEditing={isEditing}/>
+          {   
+            isEditing ? 
+            <UserInfoEditor nameSurname={nameSurname}
+              email={email}
+              cellphone={cellphone}
+              setEditing={setEditing}
+              setNameSurname={setNameSurname}
+              setEmail={setEmail}
+              setCellphone={setCellphone}/>  
+            :
+            <UserInfoList email={email}
+              cellphone={cellphone}
+              theme={colorTheme}/>
+            
+          }
+        </ThemeProvider>
       </main>
 
     </div>

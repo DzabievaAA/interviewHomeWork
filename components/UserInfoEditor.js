@@ -28,7 +28,7 @@ const [nameIsValid, setNameIsValid] = useState( true );
 const [emailIsValid, setEmailIsValid] = useState( true );
 const [phoneIsValid, setPhoneIsValid] = useState( true );
 
-const useStyles = makeStyles({
+const useStyles = makeStyles( (theme) => ({
 	textField: {
 		marginLeft: 23,
 		marginRight: 23,
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 		marginRight: 10,
 	},
 	buttonFull: {
-		backgroundColor: "#01BDA7",
+		backgroundColor: theme.mainColor,
 		width: 212,
 		height: 49,
 		borderRadius: 36,
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
 		marginTop: 26,
 		marginBottom: 17,
 	}
-});
+}));
 const classes = useStyles()
 	return (
 		

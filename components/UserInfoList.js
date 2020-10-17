@@ -3,7 +3,8 @@ import {
 	ListItem,
 	ListItemAvatar,
 	ListItemText,
-	Avatar
+	Avatar,
+	ThemeProvider
 } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -22,13 +23,22 @@ const useStyles = makeStyles( (theme) => ({
 			marginTop: 24,
 		  }
 	},
+	icon:{
+		fill: theme.mainColor,
+		width: 20,
+		height: 20,
+		[theme.breakpoints.up('sm')]:{
+			width: 30,
+			height: 30,
+		  }
+	}
 }));
 const classes = useStyles()
 	return(
 	<List className={classes.containList}>
 		<ListItem>
 			<ListItemAvatar>
-				<AlternativeEmailIcon/>
+				<AlternativeEmailIcon className={classes.icon}/>
 			</ListItemAvatar>
 			<ListItemText>
 				{email}
@@ -37,7 +47,7 @@ const classes = useStyles()
 		<hr/>
 		<ListItem>
 			<ListItemAvatar>
-				<PhoneIcon/>
+				<PhoneIcon className={classes.icon}/>
 			</ListItemAvatar>
 			<ListItemText>
 				{cellphone}

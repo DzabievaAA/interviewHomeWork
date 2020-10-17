@@ -10,9 +10,9 @@ import CloseIcon from '@material-ui/icons/Close';
 
 export default function SaveConfirmDialog ( { isOpen, onConfirm, onCancel } ) {
  
-const useStyles = makeStyles({
+const useStyles = makeStyles( (theme) => ({
   buttonFull: {
-    backgroundColor: "#01BDA7",
+    backgroundColor: theme.mainColor,
     width: 212,
     height: 49,
     borderRadius: 36,
@@ -23,10 +23,10 @@ const useStyles = makeStyles({
     width: 212,
     height: 49,
     borderRadius: 36,
-    color: "#01BDA7",
+    color: theme.mainColor,
     marginTop: 28,
     marginBottom: 17,
-    border: "1px solid #00BFA5",
+    border: `1px solid ${theme.mainColor}`,
     boxSizing: "border-box",
   },
   closeIcon: {
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   dialog: {
     marginTop: 142
   }
-});
+}));
 const classes = useStyles()
  
  return (
