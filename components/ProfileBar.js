@@ -54,7 +54,8 @@ const useStyles = makeStyles( (theme) => ({
 	},
 	editDescrip: {
 		fontSize: 14,
-	}
+		color: "white"
+	},
 }));
 const classes = useStyles()
 
@@ -79,18 +80,32 @@ const classes = useStyles()
 					justify="flex-end"
 					alignItems="center">
 					
-					<Hidden xsDown>
-						<Typography className={classes.editDescrip}>
-							РЕДАКТИРОВАТЬ
-						</Typography>
-					</Hidden>
-				<Button onClick={onClick}>
-					{
-						isEditing ? 
-							<CancelEditIcon className={classes.crossEdit}/>
-							:
-							<EditIcon className={classes.penEdit}/>
-					}
+
+				<Button className={classes.button} onClick={onClick}>
+					<Grid container  direction="row"
+									justify="flex-end"
+									alignItems="center">
+						{
+							isEditing ? 
+								<>
+									<Hidden xsDown>
+										<Typography className={classes.editDescrip}>
+											ЗАКРЫТЬ
+										</Typography>
+									</Hidden>
+									<CancelEditIcon className={classes.crossEdit}/>
+								</>
+								:
+								<>
+									<Hidden xsDown>
+										<Typography className={classes.editDescrip}>
+											РЕДАКТИРОВАТЬ
+										</Typography>
+									</Hidden>
+									<EditIcon className={classes.penEdit}/>
+								</>
+						}
+					</Grid>
 				</Button>
 				</Grid>
 			</Grid>
